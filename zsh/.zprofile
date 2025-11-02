@@ -1,7 +1,12 @@
-# To avoid potential situation where cdm(1) crashes on every TTY, here we
-# default to execute cdm(1) on tty1 only, and leave other TTYs untouched.
-if [[ "$(tty)" == '/dev/tty1' ]]; then
-    [[ -n "$CDM_SPAWN" ]] && return
-    # Avoid executing cdm(1) when X11 has already been started.
-    [[ -z "$DISPLAY$SSH_TTY$(pgrep xinit)" ]] && exec cdm
+export PATH=$PATH:/usr/share/sway-contrib
+export PATH=$PATH:~/go/bin
+
+export XDG_CONFIG_HOME=~/.config
+export GDK_DPI_SCALE=2
+export QT_SCALE_FACTOR=2
+
+
+
+if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
+    exec sway --unsupported-gpu
 fi

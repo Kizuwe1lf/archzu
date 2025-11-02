@@ -14,12 +14,5 @@ setopt menu_complete
 plugins=(git zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 
-# Variables
-export SDL_VIDEO_FULLSCREEN_HEAD=1
-export XDG_CONFIG_HOME=~/.config
-
-# Aliases
-alias vim='nvim'
-
 # Oh no
 uwufetch

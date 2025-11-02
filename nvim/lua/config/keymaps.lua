@@ -26,18 +26,3 @@ vim.keymap.set('n', '<leader>fb', "<cmd>Telescope buffers<cr>")
 vim.keymap.set('n', '<leader>fh', "<cmd>Telescope help_tags<cr>")
 vim.keymap.set('n', '<leader>of', "<cmd>Telescope oldfiles<cr>")
 
--- GP
--- Keymap for querying with yanked text
-vim.keymap.set('n', '<leader>gq', function()
-  local selection = vim.fn.getreg('"')
-  local prompt = vim.fn.input('GP Prompt: ')
-  vim.cmd('GP ' .. prompt .. ' ' .. selection)
-end, { desc = 'GP Query with yanked text' })
-
--- Keymap for querying visual selection
-vim.keymap.set('v', '<leader>gq', function()
-  vim.cmd('GP ' .. vim.fn.input('GP Prompt: '))
-end, { desc = 'GP Query on visual selection' })
-
--- Keymap for opening the chat window
-vim.keymap.set('n', '<leader>gc', ':GP!<CR>', { desc = 'GP Chat' })

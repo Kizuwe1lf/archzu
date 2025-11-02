@@ -1,6 +1,8 @@
+set $mod Mod1
 font pango:Roboto Mono Regular 12
 
-set $mod Mod1
+# Shell
+bindsym $mod+Return exec kitty 
 
 # Managing 
 bindsym $mod+Shift+q kill
@@ -27,8 +29,23 @@ bindsym $mod+Tab focus next
 bindsym $mod+Shift+Tab focus prev
 
 # Defining displays
-set $D1 "DP-0"
+set $D1 "DP-1"
 set $D2 "DP-2"
+
+# Configuring displays
+output $D1 {
+	mode 3840x2160@144Hz
+	pos 0 0
+}
+
+output $D2 {
+	mode 1920x1080@144Hz
+	pos 3840 0
+}
+
+# Wallpaper
+output $D1 bg ~/Pictures/throne_room.png fill 
+output $D2 bg ~/Pictures/lorian.jpg fill 
 
 # Defining workspaces
 set $W1 "1"
@@ -54,6 +71,8 @@ bindsym $mod+4 workspace number $W4
 bindsym $mod+5 workspace number $W5
 bindsym $mod+6 workspace number $W6
 
+bindsym $mod+less workspace back_and_forth
+
 # Move window to a workspace
 bindsym $mod+Shift+1 move container to workspace number $W1
 bindsym $mod+Shift+2 move container to workspace number $W2
@@ -63,23 +82,27 @@ bindsym $mod+Shift+5 move container to workspace number $W5
 bindsym $mod+Shift+6 move container to workspace number $W6
 
 # Application shortcuts
-bindsym $mod+d exec --no-startup-id dmenu_run
-bindsym $mod+Return exec --no-startup-id alacritty 
-bindsym $mod+Shift+c exec --no-startup-id chromium
-bindsym $mod+Shift+s exec --no-startup-id steam
-bindsym $mod+Ctrl+s exec --no-startup-id steam-native
-bindsym $mod+Shift+d exec --no-startup-id ~/Apps/Vesktop.AppImage 
-bindsym $mod+Shift+p exec --no-startup-id obs
+bindsym $mod+Shift+d exec vesktop 
+bindsym $mod+Shift+s exec steam-native 
+bindsym $mod+Ctrl+s exec steam
+bindsym $mod+Shift+c exec chromium --ozone-platform=x11 --force-device-scale-factor=1.5
+bindsym $mod+Ctrl+c exec chromium --ozone-platform=x11 --force-device-scale-factor=1
+bindsym Ctrl+Print exec grimshot copy area 
 
-# Display shortcuts
-bindsym $mod+Ctrl+c exec xrandr --output DP-2 --off
-bindsym $mod+Ctrl+o exec xrandr --output DP-2 --mode 1920x1080 --panning 3840x2160+3840+0 --right-of DP-0 --rate 144.00 | ~/.config/polybar/launch.sh
-
-# Wallpaper
-exec --no-startup-id --no-startup-id nitrogen --restore
-
-# Compositor
-exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
+# Cursor
+seat <name> hide_cursor when-typing enable
+seat <name> hide_cursor 15 
 
 # Bar
-exec_always --no-startup-id ~/.config/polybar/launch.sh 
+exec waybar -c ~/.config/waybar/dp1/config -s ~/.config/waybar/dp1/style.css &
+exec waybar -c ~/.config/waybar/dp2/config -s ~/.config/waybar/dp2/style.css &
+
+## Misc 
+input type:keyboard xkb_numlock enabled
+
+exec gammastep -O 4500 &
+
+for_window [class=".*"] opacity 0.92
+
+default_border none
+default_floating_border none

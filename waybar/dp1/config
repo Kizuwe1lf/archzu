@@ -1,0 +1,41 @@
+{
+  "layer": "bottom",
+  "position": "bottom",
+  "spacing": 1,
+  "margin": 0,
+
+  "output": "DP-1",
+
+  "modules-left": ["sway/workspaces", "sway/window"],
+  "modules-center": ["custom/spotify"],
+  "modules-right": ["clock"],
+
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "format": "{name}"
+  },
+
+  "sway/window": {
+    "format": "{app_id} - {title}",
+    "max-length": 60,
+    "all-outputs": true,
+    "rewrite": {
+      "steamwebhelper(.*)": "Steam",
+      "^(.*) - (Chromium)$": "$1",
+      "steam_app_([0-9]+) (.*)": "$2"
+    }
+  },
+
+  "custom/spotify": {
+      "exec": "~/.config/waybar/scripts/spotify.sh",
+      "format": "{}",
+      "return-type": "json",
+      "interval": 1
+  },
+
+  "clock": {
+    "format": "{:%a %d %b %Y %I:%M}"
+  }
+}
+

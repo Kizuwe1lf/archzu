@@ -1,0 +1,28 @@
+general {
+    output_format = "i3bar"
+    colors = true
+    interval = 5
+}
+
+order += "cpu_usage"
+order += "memory"
+order += "volume master"
+order += "tztime local"
+
+cpu_usage {
+    format = "CPU %usage"
+}
+
+memory {
+    format = "RAM %used %percentage_used"
+}
+
+volume master {
+    format = "V %volume%"
+    format_muted = "muted"
+    device = "default"
+}
+
+tztime local {
+    format = "%a %d %b %Y %H:%M"
+}

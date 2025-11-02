@@ -1,0 +1,71 @@
+@define-color background #83a1d6;
+@define-color background-alt #41506A;
+@define-color primary #ffffff;
+@define-color alert #A54242;
+@define-color disabled #000000;
+
+* {
+	font-family: 'Roboto Mono';
+	border: none;
+	border-radius: 0;
+	font-size: 30px;
+	min-height: 0;
+	padding: 0;
+	margin: 0;
+}
+
+window#waybar {
+	color: @primary;
+	background-color: @disabled;
+	border-bottom: none;
+	transition-duration: .5s;
+	transition-property: background-color;
+}
+
+#workspaces button {
+	padding: 10px 20px 3px 20px;
+	background-color: transparent;
+	color: @primary;
+	border-bottom: 7px solid transparent;
+}
+
+
+#workspaces button.focused {
+	background-color: @background-alt;
+	box-shadow: inherit;
+	border-bottom: 7px solid @primary;
+}
+
+#workspaces button.urgent {
+	background-color: @alert;
+}
+
+#workspaces {
+	background-color: @background;
+}
+
+.modules-right {
+	background-color: @background;
+	padding: 0 10px 0 0;
+}
+
+#custom-spotify {
+	color: #C04000;
+}
+
+#custom-spotify.paused {
+	color: #C04000;
+}
+
+#custom-spotify.playing {
+	color: #C04000;
+}
+
+#custom-spotify.stopped {
+	color: #C04000;
+}
+
+#clock {
+	color: @primary;
+	margin-left: 20px;
+}
