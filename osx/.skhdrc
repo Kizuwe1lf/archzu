@@ -1,0 +1,35 @@
+cmd + shift - c : open -n -a Google\ Chrome
+cmd - return    : open -a Kitty 
+cmd + shift - s : open -a Slack 
+
+# yabai
+cmd - 1 : yabai -m space --focus space1
+cmd - 2 : yabai -m space --focus space2
+cmd - 3 : yabai -m space --focus space3
+cmd - 4 : yabai -m space --focus space4
+cmd - 5 : yabai -m space --focus space5
+cmd - 6 : yabai -m space --focus space6
+cmd - 7 : yabai -m space --focus space7
+cmd - 8 : yabai -m space --focus space8
+cmd - 9 : yabai -m space --focus space9
+
+cmd - 0x32 : yabai -m space --focus recent
+cmd - 0x1B : yabai -m space --focus prev
+cmd - 0x18 : yabai -m space --focus next
+
+cmd - l : yabai -m window --focus stack.next || yabai -m window --focus east
+cmd - h : yabai -m window --focus stack.prev || yabai -m window --focus west
+
+cmd + shift - 1 : yabai -m window --space space1
+cmd + shift - 2 : yabai -m window --space space2
+cmd + shift - 3 : yabai -m window --space space3
+cmd + shift - 4 : yabai -m window --space space4
+cmd + shift - 5 : yabai -m window --space space5
+cmd + shift - 6 : yabai -m window --space space6
+cmd + shift - 7 : yabai -m window --space space7
+cmd + shift - 8 : yabai -m window --space space8
+cmd + shift - 9 : yabai -m window --space space9
+cmd + shift - 0 : yabai -m window --space space0
+
+cmd - m : yabai -m window --focus mouse
+cmd + shift - f : yabai -m window --toggle zoom-fullscreen
