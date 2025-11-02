@@ -5,67 +5,69 @@
 @define-color disabled #000000;
 
 * {
-	font-family: 'Roboto Mono';
-	border: none;
-	border-radius: 0;
-	font-size: 30px;
-	min-height: 0;
-	padding: 0;
-	margin: 0;
+    font-family: 'Roboto Mono', 'Symbols Nerd Font Mono', monospace;
+    border: none;
+    border-radius: 0;
+    font-size: 30px;
+    min-height: 0;
+    padding: 0;
+    margin: 0;
 }
 
 window#waybar {
-	color: @primary;
-	background-color: @disabled;
-	border-bottom: none;
-	transition-duration: .5s;
-	transition-property: background-color;
-}
-
-#workspaces button {
-	padding: 10px 20px 3px 20px;
-	background-color: transparent;
-	color: @primary;
-	border-bottom: 7px solid transparent;
-}
-
-
-#workspaces button.focused {
-	background-color: @background-alt;
-	box-shadow: inherit;
-	border-bottom: 7px solid @primary;
-}
-
-#workspaces button.urgent {
-	background-color: @alert;
+    color: @primary;
+    background-color: @background;
+    border-bottom: none;
 }
 
 #workspaces {
-	background-color: @background;
+    background-color: @background;
+}
+
+#workspaces button {
+    padding: 10px 20px 3px 20px;
+    background-color: transparent;
+    color: @primary;
+    border-bottom: 7px solid transparent;
+}
+
+#workspaces button.focused {
+    background-color: @background-alt;
+    border-bottom: 7px solid @primary;
+}
+
+#workspaces button.urgent {
+    background-color: @alert;
+}
+
+#window {
+    background-color: @background;
+    color: @primary;
+    padding: 0 20px;
 }
 
 .modules-right {
-	background-color: @background;
-	padding: 0 10px 0 0;
+    background-color: @background;
+    padding: 0 10px 0 0;
 }
 
 #custom-spotify {
-	color: #C04000;
+    color: @primary;
 }
 
 #custom-spotify.paused {
-	color: #C04000;
+    color: @primary;
 }
 
 #custom-spotify.playing {
-	color: #C04000;
+    color: @primary;
 }
 
 #custom-spotify.stopped {
-	color: #C04000;
+    color: @primary;
 }
 
 #clock {
-	color: @primary;
-	margin-left: 20px;
+    color: @primary;
+    margin-left: 20px;
 }

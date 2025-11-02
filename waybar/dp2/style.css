@@ -5,67 +5,72 @@
 @define-color disabled #000000;
 
 * {
-	font-family: 'Roboto Mono', monospace;
-	border: none;
-	border-radius: 0;
-	font-size: 20;
-	min-height: 0;
-	padding: 0;
-	margin: 0;
+    font-family: 'Roboto Mono', 'Symbols Nerd Font Mono', monospace;
+    border: none;
+    border-radius: 0;
+    font-size: 20px;
+    min-height: 0;
+    padding: 0;
+    margin: 0;
 }
 
 window#waybar {
-	color: @primary;
-	background-color: @disabled;
-	border-bottom: none;
-	transition-duration: .5s;
-	transition-property: background-color;
-}
-
-#workspaces button {
-	padding: 7px 10px 2px 10px;
-	background-color: transparent;
-	color: @primary;
-	border-bottom: 5px solid transparent;
-}
-
-
-#workspaces button.focused {
-	background-color: @background-alt;
-	box-shadow: inherit;
-	border-bottom: 5px solid @primary;
-}
-
-#workspaces button.urgent {
-	background-color: @alert;
+    color: @primary;
+    background-color: @background;
+    border-bottom: none;
 }
 
 #workspaces {
-	background-color: @background;
+    background-color: @background;
+}
+
+#workspaces button {
+    padding: 7px 10px 2px 10px;
+    background-color: transparent;
+    color: @primary;
+    border-bottom: 5px solid transparent;
+}
+
+#workspaces button.focused {
+    background-color: @background-alt;
+    border-bottom: 5px solid @primary;
+}
+
+#workspaces button.urgent {
+    background-color: @alert;
+}
+
+#window {
+    background-color: @background;
+    color: @primary;
+    padding: 0 15px;
 }
 
 .modules-right {
-	background-color: @background;
-	padding: 0 10px 0 0;
+    background-color: @background;
+    padding: 0 10px 0 0;
 }
 
 #custom-spotify {
-	color: #C04000;
+    color: @primary;
 }
 
 #custom-spotify.paused {
-	color: #C04000;
+    color: @primary;
 }
 
 #custom-spotify.playing {
-	color: #C04000;
+    color: @primary;
 }
 
 #custom-spotify.stopped {
-	color: #C04000;
+    color: @primary;
 }
 
-#pulseaudio, #memory, #cpu {
-	color: @primary;
-	margin-left: 14px;
+#pulseaudio,
+#memory,
+#cpu,
+#clock {
+    color: @primary;
+    margin-left: 14px;
 }

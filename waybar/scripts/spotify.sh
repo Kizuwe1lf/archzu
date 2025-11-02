@@ -38,6 +38,7 @@ if [ "$player_status" = "Playing" ]; then
     fi
 
     bar_length=20
+    # Use bash arithmetic for integer calculation here
     filled_chars=$((progress_percent * bar_length / 100))
     empty_chars=$((bar_length - filled_chars))
 
@@ -52,6 +53,7 @@ if [ "$player_status" = "Playing" ]; then
         progress_bar+=$empty_char
     done
 
+    # Format time (MM:SS) using bash arithmetic
     current_time=$(printf "%02d:%02d" $((position_s / 60)) $((position_s % 60)))
     total_time=$(printf "%02d:%02d" $((length_s / 60)) $((length_s % 60)))
 
@@ -60,6 +62,7 @@ elif [ "$player_status" = "Paused" ]; then
     artist=$(playerctl -p spotify_player metadata artist)
     title=$(playerctl -p spotify_player metadata title)
     
+    # Optional: Display progress bar even when paused
     position_raw=$(playerctl -p spotify_player position 2>/dev/null)
     length_raw=$(playerctl -p spotify_player metadata mpris:length 2>/dev/null)
     if [ -n "$position_raw" ] && [ -n "$length_raw" ]; then
