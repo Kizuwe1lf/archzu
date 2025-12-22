@@ -6,13 +6,24 @@ autoload -Uz compinit && compinit
 ZSH_THEME="robbyrussell"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
 
+# Plugins
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+source $ZSH/oh-my-zsh.sh
+
 # Visibility
 zstyle ':completion:*' menu select
 setopt menu_complete
 
-# Plugins
-plugins=(git zsh-autosuggestions)
-source $ZSH/oh-my-zsh.sh
+# Vi mode 
+bindkey -v
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd 'v' edit-command-line
 
-# Oh no
-uwufetch
+# Variables
+export EDITOR='nvim'
+export VISUAL='nvim'
+
+# Path
+
+# Aliases
