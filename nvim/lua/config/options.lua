@@ -8,3 +8,6 @@ vim.opt.smartcase = true
 vim.o.hidden = false
 
 vim.opt.expandtab = false
+
+vim.opt.belloff = ""
+vim.opt.visualbell = false

@@ -9,11 +9,26 @@ return {
 
 	config = function()
 		require("codecompanion").setup({
-			strategies = {
-				chat = { adapter = "deepseek" },
-				inline = { adapter = "deepseek" },
-				agent = { adapter = "deepseek" },
+			display = {
+				chat = {
+					show_reasoning = false,
+					fold_reasoning = true,
+					auto_scroll = false,
+				},
 			},
+
+			interactions = {
+				chat = {
+					adapter = "deepseek",
+				},
+				inline = {
+					adapter = "deepseek",
+				},
+				agent = {
+					adapter = "deepseek",
+				},
+			},
+
 			adapters = {
 				deepseek = function()
 					return require("codecompanion.adapters").extend("openai", {
@@ -21,11 +36,18 @@ return {
 							api_key = "cmd:echo $DEEPSEEK_API_KEY",
 						},
 						url = "https://api.deepseek.com",
-						model = "deepseek-coder",
-						stream = false,
+						opts = {
+							stream = false,
+						},
+						schema = {
+							model = {
+								default = "deepseek-coder",
+							},
+						},
 					})
 				end,
 			},
+
 			rules = {
 				custom = {
 					description = "Cool description i guess",
@@ -33,8 +55,8 @@ return {
 						{
 							path = ".codecompanion.md",
 							parser = "codecompanion",
-						}
-					}
+						},
+					},
 				},
 
 				opts = {
@@ -45,14 +67,11 @@ return {
 			},
 		})
 
-		local map = vim.api.nvim_set_keymap
-		local opts = { noremap = true, silent = true }
-
-		map("n", "<leader>a", "<cmd>CodeCompanionChat Toggle<cr>", opts)
-		map("v", "<leader>a", "<cmd>CodeCompanionChat Toggle<cr>", opts)
-
-		map("n", "<leader>cc", "<cmd>CodeCompanionActions Toggle<cr>", opts)
-
-		map("n", "<leader>cd", "<cmd>CodeCompanionChat Cancel<CR>", opts)
+		vim.api.nvim_create_autocmd("User", {
+			pattern = "CodeCompanionChatDone",
+			callback = function()
+				vim.cmd("normal! \\<Esc>")
+			end,
+		})
 	end,
 }
