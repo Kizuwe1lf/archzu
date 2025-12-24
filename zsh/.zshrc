@@ -24,6 +24,11 @@ bindkey -M vicmd 'v' edit-command-line
 export EDITOR='nvim'
 export VISUAL='nvim'
 
+# Functions
+for file in ~/.config/zsh_functions/*(DN); do
+    source "$file"
+done
+
 # Path
 
 # Aliases
